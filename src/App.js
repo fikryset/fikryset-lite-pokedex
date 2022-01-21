@@ -9,7 +9,7 @@ import PokemonDetail from "./components/PokemonDetail";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/">
         <Navibar />
         <Container>
           <Routes>
