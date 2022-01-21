@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navibar from "./components/Navibar";
 import PokemonList from "./components/PokemonList";
 import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import PokemonDetail from "./components/PokemonDetail";
 
 function App() {
