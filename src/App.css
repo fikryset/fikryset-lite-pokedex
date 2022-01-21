@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.navbarBrand {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.detailBox {
+  background-color: lightgray;
+}
+
+.spriteDetail {
+  width: 100%;
+}
