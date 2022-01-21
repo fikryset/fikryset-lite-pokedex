@@ -30,7 +30,6 @@ const PokemonList = () => {
 
   const searchPokemon = () => {
     var temp = [];
-    console.log(pokemonList);
     if (searchQuery !== "") {
       for (let i = 0; i < pokemonList.length; i++) {
         if (pokemonList[i].name.includes(searchQuery)) {
@@ -50,7 +49,6 @@ const PokemonList = () => {
   const getInfinitePokemonList = () => {
     if (counterHelper <= pokemonList.length) {
       var temp = [];
-      console.log("a");
       temp = filteredPokemonList;
       for (let i = 0 + counterHelper; i < 20 + counterHelper; i++) {
         temp.push(pokemonList[i]);
