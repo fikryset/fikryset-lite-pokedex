@@ -15,7 +15,7 @@ const Navibar = () => {
               height="30"
               className="d-inline-block align-top"
             />
-            PokeDex Lite
+            Pokedex Lite
           </Navbar.Brand>
         </Link>
       </Container>
