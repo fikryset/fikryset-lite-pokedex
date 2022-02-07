@@ -3,14 +3,17 @@ import SearchBar from "./SearchBar";
 import axios from "axios";
 import PokemonCard from "./PokemonCard";
 import { Container, Row, Button, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "../features/Counter";
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [filteredPokemonList, setFilteredPokemonList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [hasMore, setHasMore] = useState(true);
-  const [counterHelper, setCounterHelper] = useState(20);
   const isFirstRun = useRef(true);
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   const getPokemon = () => {
     axios
@@ -30,7 +33,6 @@ const PokemonList = () => {
 
   const searchPokemon = () => {
     var temp = [];
-    console.log(pokemonList);
     if (searchQuery !== "") {
       for (let i = 0; i < pokemonList.length; i++) {
         if (pokemonList[i].name.includes(searchQuery)) {
@@ -39,7 +41,7 @@ const PokemonList = () => {
       }
       setHasMore(false);
     } else {
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < count; i++) {
         temp.push(pokemonList[i]);
       }
       setHasMore(true);
@@ -48,15 +50,14 @@ const PokemonList = () => {
   };
 
   const getInfinitePokemonList = () => {
-    if (counterHelper <= pokemonList.length) {
+    if (count <= pokemonList.length) {
       var temp = [];
-      console.log("a");
       temp = filteredPokemonList;
-      for (let i = 0 + counterHelper; i < 20 + counterHelper; i++) {
+      for (let i = 0 + count; i < 20 + count; i++) {
         temp.push(pokemonList[i]);
       }
       setFilteredPokemonList(temp);
-      setCounterHelper(counterHelper + 20);
+      dispatch(increment());
     } else {
       setHasMore(false);
     }
@@ -68,6 +69,7 @@ const PokemonList = () => {
 
   useEffect(() => {
     getPokemon();
+    console.log(count);
   }, []);
 
   useEffect(() => {
